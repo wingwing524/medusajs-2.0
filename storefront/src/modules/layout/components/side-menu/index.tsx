@@ -61,19 +61,19 @@ const SideMenu = ({ regions, categories, collections }: SideMenuProps) => {
                     onClick={close}
                   />
                   
-                  {/* Sidebar panel */}
+                  {/* Sidebar panel - slides from LEFT on desktop, RIGHT on mobile */}
                   <Transition.Child
                     as={Fragment}
                     enter="transition ease-out duration-300"
-                    enterFrom="translate-x-full"
+                    enterFrom="translate-x-full xl:-translate-x-full"
                     enterTo="translate-x-0"
                     leave="transition ease-in duration-200"
                     leaveFrom="translate-x-0"
-                    leaveTo="translate-x-full"
+                    leaveTo="translate-x-full xl:-translate-x-full"
                   >
                     <div
                       data-testid="nav-menu-popup"
-                      className="relative h-full w-[85vw] max-w-md bg-white shadow-2xl flex flex-col ml-auto z-[100]"
+                      className="relative h-full w-[85vw] max-w-md bg-white shadow-2xl flex flex-col ml-auto xl:ml-0 z-[100]"
                     >
                       {/* Header */}
                       <div className="flex items-center justify-between p-6 border-b border-gray-200">

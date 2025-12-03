@@ -1,39 +1,71 @@
+"use client"
+
 import { HttpTypes } from "@medusajs/types"
-import { Container } from "@medusajs/ui"
 import Image from "next/image"
+import React from "react"
 
 type ImageGalleryProps = {
   images: HttpTypes.StoreProductImage[]
 }
 
 const ImageGallery = ({ images }: ImageGalleryProps) => {
+  const [selectedImage, setSelectedImage] = React.useState(0)
+
+  if (!images || images.length === 0) {
+    return (
+      <div className="aspect-[4/5] bg-gray-100 rounded-lg flex items-center justify-center">
+        <span className="text-gray-400">No image available</span>
+      </div>
+    )
+  }
+
   return (
-    <div className="flex items-start relative">
-      <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
-        {images.map((image, index) => {
-          return (
-            <Container
+    <div className="flex flex-col gap-4">
+      {/* Main Display Image */}
+      <div className="relative aspect-[4/5] w-full overflow-hidden bg-gray-100 rounded-lg">
+        {images[selectedImage]?.url && (
+          <Image
+            src={images[selectedImage].url}
+            alt={`Product image ${selectedImage + 1}`}
+            fill
+            priority={selectedImage === 0}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        )}
+        
+        {/* Image Counter Badge */}
+        <div className="absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1.5 rounded-full text-sm font-medium">
+          {selectedImage + 1} / {images.length}
+        </div>
+      </div>
+
+      {/* Thumbnail Strip */}
+      {images.length > 1 && (
+        <div className="grid grid-cols-5 gap-3">
+          {images.map((image, index) => (
+            <button
               key={image.id}
-              className="relative aspect-[29/34] w-full overflow-hidden bg-ui-bg-subtle"
-              id={image.id}
+              onClick={() => setSelectedImage(index)}
+              className={`relative aspect-square overflow-hidden rounded-lg border-2 transition-all ${
+                selectedImage === index
+                  ? "border-gray-900 ring-2 ring-gray-900 ring-offset-2"
+                  : "border-gray-200 hover:border-gray-400"
+              }`}
             >
-              {!!image.url && (
+              {image.url && (
                 <Image
                   src={image.url}
-                  priority={index <= 2 ? true : false}
-                  className="absolute inset-0 rounded-rounded"
-                  alt={`Product image ${index + 1}`}
+                  alt={`Thumbnail ${index + 1}`}
                   fill
-                  sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                  style={{
-                    objectFit: "cover",
-                  }}
+                  sizes="120px"
+                  className="object-cover"
                 />
               )}
-            </Container>
-          )
-        })}
-      </div>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

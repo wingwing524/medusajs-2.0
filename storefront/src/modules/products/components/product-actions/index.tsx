@@ -110,45 +110,73 @@ export default function ProductActions({
 
   return (
     <>
-      <div className="flex flex-col gap-y-2" ref={actionsRef}>
-        <div>
-          {(product.variants?.length ?? 0) > 1 && (
-            <div className="flex flex-col gap-y-4">
-              {(product.options || []).map((option) => {
-                return (
-                  <div key={option.id}>
-                    <OptionSelect
-                      option={option}
-                      current={options[option.title ?? ""]}
-                      updateOption={setOptionValue}
-                      title={option.title ?? ""}
-                      data-testid="product-options"
-                      disabled={!!disabled || isAdding}
-                    />
-                  </div>
-                )
-              })}
-              <Divider />
-            </div>
-          )}
+      <div className="flex flex-col gap-6" ref={actionsRef}>
+        {/* Price Display */}
+        <div className="pb-4 border-b border-gray-200">
+          <ProductPrice product={product} variant={selectedVariant} />
         </div>
 
-        <ProductPrice product={product} variant={selectedVariant} />
+        {/* Options Selection */}
+        {(product.variants?.length ?? 0) > 1 && (
+          <div className="flex flex-col gap-6">
+            {(product.options || []).map((option) => {
+              return (
+                <div key={option.id}>
+                  <OptionSelect
+                    option={option}
+                    current={options[option.title ?? ""]}
+                    updateOption={setOptionValue}
+                    title={option.title ?? ""}
+                    data-testid="product-options"
+                    disabled={!!disabled || isAdding}
+                  />
+                </div>
+              )
+            })}
+          </div>
+        )}
 
+        {/* Stock Status */}
+        {selectedVariant && (
+          <div className="flex items-center gap-2 text-sm">
+            {inStock ? (
+              <>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="text-green-700 font-medium">In Stock</span>
+              </>
+            ) : (
+              <>
+                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                <span className="text-red-700 font-medium">Out of Stock</span>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* Add to Cart Button */}
         <Button
           onClick={handleAddToCart}
           disabled={!inStock || !selectedVariant || !!disabled || isAdding}
           variant="primary"
-          className="w-full h-10"
+          className="w-full h-14 text-base font-semibold bg-gray-900 hover:bg-gray-800 transition-colors"
           isLoading={isAdding}
           data-testid="add-product-button"
         >
           {!selectedVariant
-            ? "Select variant"
+            ? "Select Options"
             : !inStock
-            ? "Out of stock"
-            : "Add to cart"}
+            ? "Out of Stock"
+            : "Add to Bag"}
         </Button>
+
+        {/* Wishlist Button */}
+        <button className="w-full h-12 border-2 border-gray-900 text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          Add to Wishlist
+        </button>
+
         <MobileActions
           product={product}
           variant={selectedVariant}
