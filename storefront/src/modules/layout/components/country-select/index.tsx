@@ -57,9 +57,9 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
   }
 
   return (
-    <div>
+    <div className="flex-1">
       <Listbox
-        as="span"
+        as="div"
         onChange={handleChange}
         defaultValue={
           countryCode
@@ -67,34 +67,34 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
             : undefined
         }
       >
-        <Listbox.Button className="py-1 w-full">
-          <div className="txt-compact-small flex items-start gap-x-2">
-            <span>Shipping to:</span>
-            {current && (
-              <span className="txt-compact-small flex items-center gap-x-2">
-                <ReactCountryFlag
-                  svg
-                  style={{
-                    width: "16px",
-                    height: "16px",
-                  }}
-                  countryCode={current.country ?? ""}
-                />
-                {current.label}
-              </span>
-            )}
-          </div>
+        <Listbox.Button className="w-full text-left">
+          {current && (
+            <span className="text-sm font-medium flex items-center gap-x-2">
+              <ReactCountryFlag
+                svg
+                style={{
+                  width: "18px",
+                  height: "18px",
+                }}
+                countryCode={current.country ?? ""}
+              />
+              {current.label}
+            </span>
+          )}
         </Listbox.Button>
-        <div className="flex relative w-full min-w-[320px]">
+        <div className="relative">
           <Transition
             show={state}
             as={Fragment}
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+            enter="transition ease-out duration-100"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
           >
             <Listbox.Options
-              className="absolute -bottom-[calc(100%-36px)] left-0 xsmall:left-auto xsmall:right-0 max-h-[442px] overflow-y-scroll z-[900] bg-white drop-shadow-md text-small-regular uppercase text-black no-scrollbar rounded-rounded w-full"
+              className="absolute left-0 mt-2 max-h-60 overflow-y-auto bg-white border border-gray-200 rounded-lg shadow-lg z-[110] no-scrollbar min-w-[280px] w-max"
               static
             >
               {options?.map((o, index) => {
@@ -102,16 +102,24 @@ const CountrySelect = ({ toggleState, regions }: CountrySelectProps) => {
                   <Listbox.Option
                     key={index}
                     value={o}
-                    className="py-2 hover:bg-gray-200 px-3 cursor-pointer flex items-center gap-x-2"
+                    className={({ active }) =>
+                      `py-2.5 px-3 cursor-pointer flex items-center gap-x-3 text-sm ${
+                        active ? "bg-gray-100" : ""
+                      } ${
+                        current?.country === o?.country
+                          ? "bg-gray-900 text-white hover:bg-gray-800"
+                          : ""
+                      }`
+                    }
                   >
                     <ReactCountryFlag
                       svg
                       style={{
-                        width: "16px",
-                        height: "16px",
+                        width: "18px",
+                        height: "18px",
                       }}
                       countryCode={o?.country ?? ""}
-                    />{" "}
+                    />
                     {o?.label}
                   </Listbox.Option>
                 )

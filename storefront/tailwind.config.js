@@ -54,12 +54,15 @@ module.exports = {
         large: "1440px",
         xlarge: "1680px",
         "2xlarge": "1920px",
+        xl: "1280px", // Mobile breakpoint
       },
       fontSize: {
         "3xl": "2rem",
       },
       fontFamily: {
+        raleway: ["var(--font-raleway)", "sans-serif"],
         sans: [
+          "var(--font-raleway)",
           "Inter",
           "-apple-system",
           "BlinkMacSystemFont",
