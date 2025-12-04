@@ -3,6 +3,7 @@
 import { Badge, Heading, Input, Label, Text, Tooltip } from "@medusajs/ui"
 import React from "react"
 import { useFormState } from "react-dom"
+import { useTranslations } from "../../../../i18n/client"
 
 import { applyPromotions, submitPromotionForm } from "@lib/data/cart"
 import { convertToLocale } from "@lib/util/money"
@@ -20,6 +21,7 @@ type DiscountCodeProps = {
 
 const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const t = useTranslations('checkout')
 
   const { items = [], promotions = [] } = cart
   const removePromotionCode = async (code: string) => {
@@ -63,7 +65,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
               className="txt-medium text-ui-fg-interactive hover:text-ui-fg-interactive-hover"
               data-testid="add-discount-button"
             >
-              Add Promotion Code(s)
+              {t('add_promotion_code')}
             </button>
 
             {/* <Tooltip content="You can add multiple promotion codes">
@@ -86,7 +88,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
                   variant="secondary"
                   data-testid="discount-apply-button"
                 >
-                  Apply
+                  {t('apply')}
                 </SubmitButton>
               </div>
 
@@ -102,7 +104,7 @@ const DiscountCode: React.FC<DiscountCodeProps> = ({ cart }) => {
           <div className="w-full flex items-center">
             <div className="flex flex-col w-full">
               <Heading className="txt-medium mb-2">
-                Promotion(s) applied:
+                {t('promotions_applied')}
               </Heading>
 
               {promotions.map((promotion) => {

@@ -14,6 +14,7 @@ import MobileActions from "./mobile-actions"
 import ProductPrice from "../product-price"
 import { addToCart } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
+import { useTranslations } from "../../../../i18n/client"
 
 type ProductActionsProps = {
   product: HttpTypes.StoreProduct
@@ -35,6 +36,7 @@ export default function ProductActions({
   region,
   disabled,
 }: ProductActionsProps) {
+  const t = useTranslations('product')
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false)
@@ -144,12 +146,12 @@ export default function ProductActions({
             {inStock ? (
               <>
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-green-700 font-medium">In Stock</span>
+                <span className="text-green-700 font-medium">{t('in_stock')}</span>
               </>
             ) : (
               <>
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                <span className="text-red-700 font-medium">Out of Stock</span>
+                <span className="text-red-700 font-medium">{t('out_of_stock')}</span>
               </>
             )}
           </div>
@@ -160,7 +162,7 @@ export default function ProductActions({
           onClick={() => setIsSizeGuideOpen(true)}
           className="w-full text-sm text-gray-700 hover:text-gray-900 font-medium underline text-center"
         >
-          📏 View Size Guide
+          📏 {t('size_guide')}
         </button>
 
         {/* Add to Cart Button */}
@@ -173,10 +175,10 @@ export default function ProductActions({
           data-testid="add-product-button"
         >
           {!selectedVariant
-            ? "Select Options"
+            ? t('select_options')
             : !inStock
-            ? "Out of Stock"
-            : "Add to Bag"}
+            ? t('out_of_stock')
+            : t('add_to_cart')}
         </Button>
 
         {/* Wishlist Button */}
@@ -184,7 +186,7 @@ export default function ProductActions({
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
           </svg>
-          Add to Wishlist
+          {t('add_to_wishlist')}
         </button>
 
         <MobileActions

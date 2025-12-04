@@ -1,6 +1,11 @@
+"use client"
+
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { useTranslations } from "../../../../i18n/client"
 
 const Hero = () => {
+  const t = useTranslations('home')
+  
   return (
     <div className="relative h-[70vh] min-h-[500px] w-full overflow-hidden bg-gray-900">
       {/* Background Image with Overlay */}
@@ -17,25 +22,25 @@ const Hero = () => {
         <div className="content-container">
           <div className="max-w-2xl text-white">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              New Season
+              {t('hero_title')}
               <br />
-              <span className="text-gray-300">Collection</span>
+              <span className="text-gray-300">{t('hero_subtitle')}</span>
             </h1>
             <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-lg">
-              Discover our latest arrivals featuring premium quality bags and accessories
+              {t('hero_description')}
             </p>
             <div className="flex gap-4">
               <LocalizedClientLink
                 href="/store"
                 className="px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all transform hover:scale-105"
               >
-                Shop Now
+                {t('shop_now')}
               </LocalizedClientLink>
               <LocalizedClientLink
                 href="/collections"
                 className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-gray-900 transition-all"
               >
-                View Collections
+                {t('view_collections')}
               </LocalizedClientLink>
             </div>
           </div>

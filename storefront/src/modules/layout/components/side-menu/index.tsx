@@ -1,22 +1,22 @@
 "use client"
 
 import { Popover, Transition } from "@headlessui/react"
-import { ArrowRightMini } from "@medusajs/icons"
-import { Text, clx, useToggleState } from "@medusajs/ui"
-import { Fragment, useState } from "react"
+import { Text, useToggleState } from "@medusajs/ui"
+import { Fragment } from "react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CountrySelect from "../country-select"
 import { HttpTypes } from "@medusajs/types"
 import User from "@modules/common/icons/user"
-import Bell from "@modules/common/icons/bell"
 import X from "@modules/common/icons/x"
+import { useTranslations, useChangeLocale, useLocale } from "../../../../i18n/client"
 
-const languages = [
-  { code: "en", label: "EN", name: "English" },
-  { code: "zh-HK", label: "繁", name: "繁體中文" },
-  { code: "zh-CN", label: "简", name: "简体中文" },
-]
+const locales = ['en', 'zh-HK', 'zh-CN'] as const
+const localeLabels = {
+  'en': 'EN',
+  'zh-HK': '繁',
+  'zh-CN': '简'
+} as const
 
 type SideMenuProps = {
   regions: HttpTypes.StoreRegion[] | null
@@ -27,7 +27,9 @@ type SideMenuProps = {
 
 const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps) => {
   const toggleState = useToggleState()
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0])
+  const t = useTranslations()
+  const currentLocale = useLocale()
+  const { changeLocale, isPending } = useChangeLocale()
   const isLoggedIn = !!customer
 
   return (
@@ -78,7 +80,7 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
                     >
                       {/* Header */}
                       <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                        <h2 className="text-lg font-semibold uppercase tracking-wide">Menu</h2>
+                        <h2 className="text-lg font-semibold uppercase tracking-wide">{t('menu.title')}</h2>
                         <button 
                           data-testid="close-menu-button" 
                           onClick={close}
@@ -93,7 +95,7 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
                         {/* Collections Section */}
                         {collections && collections.length > 0 && (
                           <div className="px-6 py-4 border-t border-gray-200">
-                            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Collections</h3>
+                            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">{t('menu.collections')}</h3>
                             <ul className="flex flex-col gap-1">
                               {collections.map((collection) => (
                                 <li key={collection.id}>
@@ -113,7 +115,7 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
                         {/* Categories Section */}
                         {categories && categories.length > 0 && (
                           <div className="px-6 py-4 border-t border-gray-200">
-                            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Categories</h3>
+                            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">{t('menu.categories')}</h3>
                             <ul className="flex flex-col gap-1">
                               {categories.map((category) => {
                                 if (category.parent_category) {
@@ -137,7 +139,7 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
 
                         {/* Regions Selector */}
                         <div className="px-6 py-4 border-t border-gray-200">
-                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Shipping Region</h3>
+                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">{t('menu.shipping_region')}</h3>
                           <div className="relative">
                             {regions && (
                               <div
@@ -163,19 +165,20 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
 
                         {/* Language Selector */}
                         <div className="px-6 py-4 border-t border-gray-200">
-                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Language</h3>
+                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">{t('menu.language')}</h3>
                           <div className="flex gap-2 justify-start">
-                            {languages.map((language) => (
+                            {locales.map((locale) => (
                               <button
-                                key={language.code}
-                                onClick={() => setSelectedLanguage(language)}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                                  selectedLanguage.code === language.code
+                                key={locale}
+                                onClick={() => changeLocale(locale)}
+                                disabled={isPending}
+                                className={`px-4 py-2 rounded-full text-sm font-medium transition-all disabled:opacity-50 ${
+                                  currentLocale === locale
                                     ? "bg-gray-900 text-white shadow-md"
                                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                 }`}
                               >
-                                {language.label}
+                                {localeLabels[locale]}
                               </button>
                             ))}
                           </div>
@@ -183,7 +186,7 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
 
                         {/* Account Section */}
                         <div className="px-6 py-4 border-t border-gray-200">
-                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Account</h3>
+                          <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">{t('menu.account')}</h3>
                           {isLoggedIn ? (
                             <LocalizedClientLink
                               href="/account"
@@ -191,7 +194,7 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
                               className="flex items-center justify-center gap-3 py-3 px-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
                             >
                               <User size="20" />
-                              <span>Account</span>
+                              <span>{t('menu.my_account')}</span>
                             </LocalizedClientLink>
                           ) : (
                             <LocalizedClientLink
@@ -200,7 +203,7 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
                               className="flex items-center justify-center gap-3 py-3 px-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
                             >
                               <User size="20" />
-                              <span>Login / Register</span>
+                              <span>{t('menu.login_register')}</span>
                             </LocalizedClientLink>
                           )}
                         </div>

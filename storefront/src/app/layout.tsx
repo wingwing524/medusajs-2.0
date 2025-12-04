@@ -1,6 +1,8 @@
 import { getBaseURL } from "@lib/util/env"
 import { Metadata } from "next"
 import { Raleway } from "next/font/google"
+import { NextIntlClientProvider } from 'next-intl'
+import { getLocale } from '../i18n/actions'
 import "styles/globals.css"
 
 const raleway = Raleway({
@@ -13,11 +15,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
 }
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default async function RootLayout(props: { children: React.ReactNode }) {
+  const locale = await getLocale()
+
   return (
-    <html lang="en" data-mode="light" className={raleway.variable}>
+    <html lang={locale} data-mode="light" className={raleway.variable}>
       <body className="font-raleway">
-        <main className="relative">{props.children}</main>
+        <NextIntlClientProvider>
+          <main className="relative">{props.children}</main>
+        </NextIntlClientProvider>
       </body>
     </html>
   )

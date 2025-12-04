@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from "react"
 import Globe from "@modules/common/icons/globe"
 import ChevronDown from "@modules/common/icons/chevron-down"
+import Cookies from "js-cookie"
+import { usePathname } from "next/navigation"
 
 const languages = [
   { code: "en", label: "EN", name: "English" },
@@ -12,8 +14,23 @@ const languages = [
 
 export default function LanguageSelector() {
   const [isOpen, setIsOpen] = useState(false)
-  const [selectedLanguage, setSelectedLanguage] = useState(languages[0])
+  const pathname = usePathname()
   const dropdownRef = useRef<HTMLDivElement>(null)
+  
+  // Get current locale from pathname
+  const currentLocale = pathname.split('/')[1] || 'en'
+  const [selectedLanguage, setSelectedLanguage] = useState(
+    languages.find(lang => lang.code === currentLocale) || languages[0]
+  )
+
+  // Update selected language when pathname changes
+  useEffect(() => {
+    const localeFromPath = pathname.split('/')[1] || 'en'
+    const language = languages.find(lang => lang.code === localeFromPath)
+    if (language) {
+      setSelectedLanguage(language)
+    }
+  }, [pathname])
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -32,7 +49,12 @@ export default function LanguageSelector() {
   const handleLanguageSelect = (language: typeof languages[0]) => {
     setSelectedLanguage(language)
     setIsOpen(false)
-    // TODO: Implement actual language switching logic
+    
+    // Set locale cookie
+    Cookies.set('NEXT_LOCALE', language.code, { expires: 365 })
+    
+    // Reload page to apply new locale
+    window.location.reload()
   }
 
   return (

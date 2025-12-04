@@ -1,9 +1,16 @@
+"use client"
+
 import { Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import { getCategoriesList } from "@lib/data/categories"
+import { useTranslations } from "../../../../i18n/client"
+import { HttpTypes } from "@medusajs/types"
 
-export default async function Footer() {
-  const { product_categories } = await getCategoriesList(0, 10)
+type FooterProps = {
+  categories: HttpTypes.StoreProductCategory[]
+}
+
+export default function Footer({ categories }: FooterProps) {
+  const t = useTranslations('footer')
 
   return (
     <footer className="border-t border-ui-border-base w-full bg-gray-50">
@@ -14,34 +21,34 @@ export default async function Footer() {
           <div className="flex flex-col gap-6">
             {/* Contact Us */}
             <div>
-              <h3 className="font-semibold text-base mb-3">Contact Us</h3>
+              <h3 className="font-semibold text-base mb-3">{t('contact_us')}</h3>
               <div className="text-sm text-gray-600 space-y-1">
-                <p>Email: info@eshop.com</p>
+                <p>{t('email')}: info@eshop.com</p>
               </div>
             </div>
 
             {/* Business Inquiries */}
             <div>
-              <h3 className="font-semibold text-base mb-3">Business Inquiries</h3>
+              <h3 className="font-semibold text-base mb-3">{t('business_inquiries')}</h3>
               <div className="text-sm text-gray-600 space-y-1">
-                <p>PR & Sponsorship: pr@eshop.com</p>
-                <p>Business Collaboration: business@eshop.com</p>
+                <p>{t('pr_sponsorship')}: pr@eshop.com</p>
+                <p>{t('business_collaboration')}: business@eshop.com</p>
               </div>
             </div>
 
             {/* Office Hours */}
             <div>
-              <h3 className="font-semibold text-base mb-3">Office Hours</h3>
+              <h3 className="font-semibold text-base mb-3">{t('office_hours')}</h3>
               <div className="text-sm text-gray-600 space-y-1">
-                <p>Monday to Friday</p>
-                <p>9:00 AM - 6:30 PM</p>
-                <p className="mt-2">Closed on Public Holidays</p>
+                <p>{t('weekdays')}</p>
+                <p>{t('hours')}</p>
+                <p className="mt-2">{t('closed_holidays')}</p>
               </div>
             </div>
 
             {/* Office Address */}
             <div>
-              <h3 className="font-semibold text-base mb-3">Office Address</h3>
+              <h3 className="font-semibold text-base mb-3">{t('office_address')}</h3>
               <div className="text-sm text-gray-600">
                 <p>Unit 1503, 15/F, Tower 1,</p>
                 <p>Admiralty Centre,</p>
@@ -53,15 +60,15 @@ export default async function Footer() {
 
           {/* Column 2: Products */}
           <div>
-            <h3 className="font-semibold text-base mb-4">Products</h3>
+            <h3 className="font-semibold text-base mb-4">{t('products')}</h3>
             <ul className="flex flex-col gap-3 text-sm text-gray-600">
               <li>
                 <LocalizedClientLink href="/store" className="hover:text-gray-900 transition-colors">
-                  All Products
+                  {t('all_products')}
                 </LocalizedClientLink>
               </li>
-              {product_categories && product_categories.length > 0 && (
-                product_categories.slice(0, 8).map((category) => {
+              {categories && categories.length > 0 && (
+                categories.slice(0, 8).map((category) => {
                   if (category.parent_category) {
                     return null
                   }
@@ -82,41 +89,41 @@ export default async function Footer() {
 
           {/* Column 3: Help */}
           <div>
-            <h3 className="font-semibold text-base mb-4">Need Help?</h3>
+            <h3 className="font-semibold text-base mb-4">{t('need_help')}</h3>
             <ul className="flex flex-col gap-3 text-sm text-gray-600">
               <li>
                 <LocalizedClientLink href="/about" className="hover:text-gray-900 transition-colors">
-                  About Us
+                  {t('about_us')}
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/shopping-guide" className="hover:text-gray-900 transition-colors">
-                  Shopping Guide
+                  {t('shopping_guide')}
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/shipping" className="hover:text-gray-900 transition-colors">
-                  Shipping Information
+                  {t('shipping_information')}
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/payment" className="hover:text-gray-900 transition-colors">
-                  Payment Methods
+                  {t('payment_methods')}
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/terms" className="hover:text-gray-900 transition-colors">
-                  Terms & Conditions
+                  {t('terms_conditions')}
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/care-guide" className="hover:text-gray-900 transition-colors">
-                  Bag Care Guide
+                  {t('bag_care_guide')}
                 </LocalizedClientLink>
               </li>
               <li>
                 <LocalizedClientLink href="/returns" className="hover:text-gray-900 transition-colors">
-                  7-Day Return Policy
+                  {t('return_policy')}
                 </LocalizedClientLink>
               </li>
             </ul>
@@ -124,27 +131,27 @@ export default async function Footer() {
 
           {/* Column 4: Newsletter */}
           <div>
-            <h3 className="font-semibold text-base mb-4">Subscribe to Our Newsletter</h3>
+            <h3 className="font-semibold text-base mb-4">{t('newsletter')}</h3>
             <p className="text-sm text-gray-600 mb-4">
-              Subscribe to receive the latest offers and new product information
+              {t('newsletter_text')}
             </p>
             <form className="flex flex-col gap-3">
               <input
                 type="email"
-                placeholder="Enter your email address"
+                placeholder={t('email_placeholder')}
                 className="px-4 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm"
               />
               <button
                 type="submit"
                 className="px-4 py-2.5 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium text-sm"
               >
-                Subscribe
+                {t('subscribe')}
               </button>
             </form>
 
             {/* Social Media Icons */}
             <div className="mt-6">
-              <h4 className="font-semibold text-sm mb-3">Follow Us</h4>
+              <h4 className="font-semibold text-sm mb-3">{t('follow_us')}</h4>
               <div className="flex gap-4">
                 <a
                   href="https://facebook.com"
@@ -187,14 +194,14 @@ export default async function Footer() {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center py-8 border-t border-gray-200">
           <Text className="text-sm text-gray-600">
-            © {new Date().getFullYear()} Medusa Store. All rights reserved.
+            © {new Date().getFullYear()} Medusa Store. {t('all_rights_reserved')}
           </Text>
           <div className="flex gap-6 mt-4 md:mt-0">
             <LocalizedClientLink href="/privacy" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-              Privacy Policy
+              {t('privacy_policy')}
             </LocalizedClientLink>
             <LocalizedClientLink href="/terms" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
-              Terms of Service
+              {t('terms_of_service')}
             </LocalizedClientLink>
           </div>
         </div>
