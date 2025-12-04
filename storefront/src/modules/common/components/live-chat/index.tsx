@@ -2,12 +2,14 @@
 
 import { useState } from "react"
 import { X } from "@medusajs/icons"
+import { useTranslations } from "../../../../i18n/client"
 
 const LiveChat = () => {
+  const t = useTranslations('chat')
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Array<{ text: string; sender: 'user' | 'agent'; timestamp: Date }>>([
     {
-      text: "Hi! Welcome to Medusa Store. How can I help you today?",
+      text: t('welcome'),
       sender: 'agent',
       timestamp: new Date()
     }
@@ -29,7 +31,7 @@ const LiveChat = () => {
     // Simulate agent response (backend will handle this later)
     setTimeout(() => {
       setMessages(prev => [...prev, {
-        text: "Thank you for your message. An agent will respond shortly.",
+        text: t('agent_response'),
         sender: 'agent',
         timestamp: new Date()
       }])
@@ -70,15 +72,15 @@ const LiveChat = () => {
                 <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white rounded-full"></span>
               </div>
               <div>
-                <h3 className="font-semibold text-sm">Customer Support</h3>
-                <p className="text-xs text-gray-300">Online • Typically replies instantly</p>
+                <h3 className="font-semibold text-sm">{t('title')}</h3>
+                <p className="text-xs text-gray-300">{t('online')} • {t('typically_replies')}</p>
               </div>
             </div>
             <button
               onClick={() => setIsOpen(false)}
               className="px-3 py-1 hover:bg-gray-800 rounded-lg transition-colors text-white text-sm font-medium"
             >
-              Close
+              {t('close')}
             </button>
           </div>
 
@@ -109,13 +111,13 @@ const LiveChat = () => {
           <div className="px-4 py-3 bg-white border-t border-gray-200">
             <div className="flex gap-2 flex-wrap">
               <button className="text-xs px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
-                Track Order
+                {t('track_order')}
               </button>
               <button className="text-xs px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
-                Shipping Info
+                {t('shipping_info')}
               </button>
               <button className="text-xs px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
-                Returns
+                {t('returns')}
               </button>
             </div>
           </div>
@@ -128,7 +130,7 @@ const LiveChat = () => {
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder="Type your message..."
+                placeholder={t('placeholder')}
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-sm"
               />
               <button

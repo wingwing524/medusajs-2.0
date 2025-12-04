@@ -13,7 +13,36 @@
     "easy_returns_title": "7-Day Returns",
     "easy_returns_desc": "Hassle-free return policy",
     "support_24_7_title": "24/7 Support",
-    "support_24_7_desc": "Dedicated customer service"
+    "support_24_7_desc": "Dedicated customer service",
+    "shop_by_category": "Shop by Category",
+    "explore_collections": "Explore our curated collections",
+    "category_bags": "Bags",
+    "category_bags_desc": "Premium handbags",
+    "category_wallets": "Wallets",
+    "category_wallets_desc": "Elegant accessories",
+    "category_new_arrivals": "New Arrivals",
+    "category_new_arrivals_desc": "Latest collection",
+    "category_sale": "Sale",
+    "category_sale_desc": "Up to 50% off",
+    "featured_collections": "Featured Collections",
+    "handpicked_products": "Handpicked products just for you",
+    "limited_time_offer": "Limited Time Offer",
+    "get_discount": "Get 20% Off",
+    "your_first_order": "Your First Order",
+    "newsletter_desc": "Subscribe to our newsletter and receive exclusive offers and updates on new arrivals",
+    "enter_email": "Enter your email",
+    "subscribe": "Subscribe",
+    "privacy_consent": "By subscribing, you agree to our Privacy Policy and consent to receive updates",
+    "our_story": "Our Story",
+    "crafted_with": "Crafted with",
+    "passion_quality": "Passion & Quality",
+    "story_desc_1": "Since our founding, we've been dedicated to creating premium accessories that combine timeless elegance with modern functionality. Each piece is carefully crafted to meet the highest standards of quality and design.",
+    "story_desc_2": "Our commitment to sustainability and ethical production ensures that every product not only looks beautiful but also contributes to a better future.",
+    "learn_more": "Learn More",
+    "shop_collection": "Shop Collection",
+    "happy_customers": "Happy Customers",
+    "products": "Products",
+    "countries": "Countries"
   },
   "common": {
     "home": "Home",
@@ -75,7 +104,10 @@
     "simple_exchanges": "Simple exchanges",
     "simple_exchanges_desc": "Is the fit not quite right? No worries - we'll exchange your product for a new one.",
     "easy_returns": "Easy returns",
-    "easy_returns_desc": "Just return your product and we'll refund your money. No questions asked – we'll do our best to make sure your return is hassle-free."
+    "easy_returns_desc": "Just return your product and we'll refund your money. No questions asked – we'll do our best to make sure your return is hassle-free.",
+    "free_shipping": "Free Shipping",
+    "secure_payment": "Secure Payment",
+    "easy_returns_badge": "Easy Returns"
   },
   "chat": {
     "title": "Customer Support",
@@ -86,7 +118,8 @@
     "agent_response": "Thank you for your message. An agent will respond shortly.",
     "track_order": "Track Order",
     "shipping_info": "Shipping Info",
-    "returns": "Returns"
+    "returns": "Returns",
+    "close": "Close"
   },
   "footer": {
     "contact_us": "Contact Us",
@@ -155,7 +188,20 @@
     "go_to_checkout": "Go to checkout",
     "already_have_account": "Already have an account?",
     "sign_in_better_experience": "Sign in for a better experience.",
-    "sign_in": "Sign in"
+    "sign_in": "Sign in",
+    "cart_with_count": "Cart ({count})",
+    "quantity_label": "Quantity",
+    "remove": "Remove",
+    "subtotal_excl_taxes": "Subtotal (excl. taxes)",
+    "go_to_cart_page": "Go to cart",
+    "go_to_all_products": "Go to all products page",
+    "item": "Item",
+    "quantity": "Quantity",
+    "price": "Price",
+    "subtotal_excl_shipping_taxes": "Subtotal (excl. shipping and taxes)",
+    "discount": "Discount",
+    "taxes": "Taxes",
+    "gift_card": "Gift card"
   },
   "checkout": {
     "shipping_address": "Shipping Address",
@@ -221,6 +267,13 @@
     "date_placed": "Date placed",
     "order_number": "Order number",
     "total_amount": "Total amount",
-    "no_recent_orders": "No recent orders"
+    "no_recent_orders": "No recent orders",
+    "account_title": "Account",
+    "overview": "Overview",
+    "orders": "Orders",
+    "logout": "Log out",
+    "got_questions": "Got questions?",
+    "got_questions_description": "You can find frequently asked questions and answers on our customer service page.",
+    "customer_service": "Customer Service"
   }
 }

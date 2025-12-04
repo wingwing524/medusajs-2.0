@@ -3,6 +3,7 @@
 import { Fragment } from "react"
 import { Dialog, Transition } from "@headlessui/react"
 import { X } from "@medusajs/icons"
+import { useTranslations } from "../../../../i18n/client"
 
 type SizeGuideModalProps = {
   isOpen: boolean
@@ -10,6 +11,7 @@ type SizeGuideModalProps = {
 }
 
 const SizeGuideModal = ({ isOpen, onClose }: SizeGuideModalProps) => {
+  const t = useTranslations('size_guide')
   const sizeChart = [
     { size: 'XS', chest: '32-34', waist: '24-26', hips: '34-36', length: '26' },
     { size: 'S', chest: '34-36', waist: '26-28', hips: '36-38', length: '27' },
@@ -49,7 +51,7 @@ const SizeGuideModal = ({ isOpen, onClose }: SizeGuideModalProps) => {
                 {/* Header */}
                 <div className="flex items-center justify-between mb-6">
                   <Dialog.Title className="text-2xl font-bold text-gray-900">
-                    Size Guide
+                    {t('title')}
                   </Dialog.Title>
                   <button
                     onClick={onClose}
@@ -63,15 +65,15 @@ const SizeGuideModal = ({ isOpen, onClose }: SizeGuideModalProps) => {
                 <div className="space-y-6">
                   {/* How to Measure */}
                   <div className="bg-gray-50 rounded-lg p-6">
-                    <h3 className="font-semibold text-lg mb-4">How to Measure</h3>
+                    <h3 className="font-semibold text-lg mb-4">{t('how_to_measure')}</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="flex gap-4">
                         <div className="flex-shrink-0 w-10 h-10 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold">
                           1
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-1">Chest</h4>
-                          <p className="text-sm text-gray-600">Measure around the fullest part of your chest, keeping the tape horizontal.</p>
+                          <h4 className="font-semibold mb-1">{t('chest')}</h4>
+                          <p className="text-sm text-gray-600">{t('chest_instruction')}</p>
                         </div>
                       </div>
                       <div className="flex gap-4">
@@ -79,8 +81,8 @@ const SizeGuideModal = ({ isOpen, onClose }: SizeGuideModalProps) => {
                           2
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-1">Waist</h4>
-                          <p className="text-sm text-gray-600">Measure around your natural waistline, keeping the tape comfortably loose.</p>
+                          <h4 className="font-semibold mb-1">{t('waist')}</h4>
+                          <p className="text-sm text-gray-600">{t('waist_instruction')}</p>
                         </div>
                       </div>
                       <div className="flex gap-4">
@@ -88,8 +90,8 @@ const SizeGuideModal = ({ isOpen, onClose }: SizeGuideModalProps) => {
                           3
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-1">Hips</h4>
-                          <p className="text-sm text-gray-600">Measure around the fullest part of your hips, about 8 inches below your waist.</p>
+                          <h4 className="font-semibold mb-1">{t('hips')}</h4>
+                          <p className="text-sm text-gray-600">{t('hips_instruction')}</p>
                         </div>
                       </div>
                       <div className="flex gap-4">
@@ -97,8 +99,8 @@ const SizeGuideModal = ({ isOpen, onClose }: SizeGuideModalProps) => {
                           4
                         </div>
                         <div>
-                          <h4 className="font-semibold mb-1">Length</h4>
-                          <p className="text-sm text-gray-600">Measure from the highest point of your shoulder down to your desired length.</p>
+                          <h4 className="font-semibold mb-1">{t('length')}</h4>
+                          <p className="text-sm text-gray-600">{t('length_instruction')}</p>
                         </div>
                       </div>
                     </div>
@@ -106,16 +108,16 @@ const SizeGuideModal = ({ isOpen, onClose }: SizeGuideModalProps) => {
 
                   {/* Size Chart */}
                   <div>
-                    <h3 className="font-semibold text-lg mb-4">Size Chart (inches)</h3>
+                    <h3 className="font-semibold text-lg mb-4">{t('size_chart')}</h3>
                     <div className="overflow-x-auto">
                       <table className="w-full border-collapse">
                         <thead>
                           <tr className="bg-gray-900 text-white">
-                            <th className="px-4 py-3 text-left font-semibold">Size</th>
-                            <th className="px-4 py-3 text-left font-semibold">Chest</th>
-                            <th className="px-4 py-3 text-left font-semibold">Waist</th>
-                            <th className="px-4 py-3 text-left font-semibold">Hips</th>
-                            <th className="px-4 py-3 text-left font-semibold">Length</th>
+                            <th className="px-4 py-3 text-left font-semibold">{t('size')}</th>
+                            <th className="px-4 py-3 text-left font-semibold">{t('chest')}</th>
+                            <th className="px-4 py-3 text-left font-semibold">{t('waist')}</th>
+                            <th className="px-4 py-3 text-left font-semibold">{t('hips')}</th>
+                            <th className="px-4 py-3 text-left font-semibold">{t('length')}</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -135,25 +137,25 @@ const SizeGuideModal = ({ isOpen, onClose }: SizeGuideModalProps) => {
 
                   {/* Fit Recommendations */}
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                    <h3 className="font-semibold text-lg mb-3 text-blue-900">Fit Recommendations</h3>
+                    <h3 className="font-semibold text-lg mb-3 text-blue-900">{t('fit_recommendations')}</h3>
                     <ul className="space-y-2 text-sm text-blue-800">
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span>If you're between sizes, we recommend sizing up for a more comfortable fit.</span>
+                        <span>{t('fit_tip_1')}</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span>Our garments are designed for a regular fit. Check product details for specific fit notes.</span>
+                        <span>{t('fit_tip_2')}</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
-                        <span>Still unsure? Contact our customer service team for personalized sizing advice.</span>
+                        <span>{t('fit_tip_3')}</span>
                       </li>
                     </ul>
                   </div>

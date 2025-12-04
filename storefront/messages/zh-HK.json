@@ -13,7 +13,36 @@
     "easy_returns_title": "7天退貨",
     "easy_returns_desc": "輕鬆退貨政策",
     "support_24_7_title": "24/7客戶服務",
-    "support_24_7_desc": "專業客戶服務團隊"
+    "support_24_7_desc": "專業客戶服務團隊",
+    "shop_by_category": "按類別選購",
+    "explore_collections": "探索我們精心挑選的系列",
+    "category_bags": "手袋",
+    "category_bags_desc": "優質手袋",
+    "category_wallets": "銀包",
+    "category_wallets_desc": "優雅配飾",
+    "category_new_arrivals": "新品上市",
+    "category_new_arrivals_desc": "最新系列",
+    "category_sale": "特價",
+    "category_sale_desc": "低至5折",
+    "featured_collections": "精選系列",
+    "handpicked_products": "為您精心挑選的商品",
+    "limited_time_offer": "限時優惠",
+    "get_discount": "首單享8折",
+    "your_first_order": "首次訂單",
+    "newsletter_desc": "訂閱我們的電子報，接收獨家優惠及新品資訊",
+    "enter_email": "輸入您的電郵地址",
+    "subscribe": "訂閱",
+    "privacy_consent": "訂閱即表示您同意我們的私隱政策並同意接收更新資訊",
+    "our_story": "我們的故事",
+    "crafted_with": "精心製作",
+    "passion_quality": "熱誠與品質",
+    "story_desc_1": "自創立以來，我們一直致力於打造融合永恆優雅與現代功能的優質配飾。每件作品均經過精心製作，達到最高品質和設計標準。",
+    "story_desc_2": "我們致力於可持續發展和道德生產，確保每件產品不僅外觀精美，更能為更美好的未來作出貢獻。",
+    "learn_more": "了解更多",
+    "shop_collection": "選購系列",
+    "happy_customers": "滿意顧客",
+    "products": "產品",
+    "countries": "國家"
   },
   "common": {
     "home": "首頁",
@@ -75,18 +104,22 @@
     "simple_exchanges": "簡易換貨",
     "simple_exchanges_desc": "尺寸不合適？別擔心 - 我們會為你換一個新的商品。",
     "easy_returns": "輕鬆退貨",
-    "easy_returns_desc": "只需退回商品，我們就會退款。無需詢問 - 我們會盡力確保你的退貨過程順利無憂。"
+    "easy_returns_desc": "只需退回商品，我們就會退款。無需詢問 - 我們會盡力確保你的退貨過程順利無憂。",
+    "free_shipping": "免費配送",
+    "secure_payment": "安全付款",
+    "easy_returns_badge": "輕鬆退貨"
   },
   "chat": {
     "title": "客戶支援",
     "online": "在線",
     "typically_replies": "通常即時回覆",
-    "placeholder": "輸入你的訊息...",
-    "welcome": "你好！歡迎來到 Medusa 商店。我能為你提供什麼協助？",
-    "agent_response": "感謝你的訊息。客服人員將很快回覆。",
+    "placeholder": "輸入您的訊息...",
+    "welcome": "您好！歡迎來到 Medusa 商店。有什麼可以幫到您？",
+    "agent_response": "感謝您的留言。客服人員將盡快回覆。",
     "track_order": "追蹤訂單",
     "shipping_info": "配送資訊",
-    "returns": "退貨"
+    "returns": "退貨",
+    "close": "關閉"
   },
   "footer": {
     "contact_us": "聯絡我們",
@@ -155,7 +188,20 @@
     "go_to_checkout": "前往結帳",
     "already_have_account": "已有帳戶？",
     "sign_in_better_experience": "登入以享受更好的購物體驗。",
-    "sign_in": "登入"
+    "sign_in": "登入",
+    "cart_with_count": "購物車 ({count})",
+    "quantity_label": "數量",
+    "remove": "移除",
+    "subtotal_excl_taxes": "小計（不含稅）",
+    "go_to_cart_page": "前往購物車",
+    "go_to_all_products": "前往所有商品頁面",
+    "item": "商品",
+    "quantity": "數量",
+    "price": "價格",
+    "subtotal_excl_shipping_taxes": "小計（不含運費和稅項）",
+    "discount": "折扣",
+    "taxes": "稅項",
+    "gift_card": "禮品卡"
   },
   "checkout": {
     "shipping_address": "配送地址",
@@ -221,6 +267,13 @@
     "date_placed": "下單日期",
     "order_number": "訂單編號",
     "total_amount": "總金額",
-    "no_recent_orders": "沒有最近的訂單"
+    "no_recent_orders": "沒有最近的訂單",
+    "account_title": "帳戶",
+    "overview": "概覽",
+    "orders": "訂單",
+    "logout": "登出",
+    "got_questions": "有問題嗎？",
+    "got_questions_description": "你可以在我們的客戶服務頁面找到常見問題和答案。",
+    "customer_service": "客戶服務"
   }
 }

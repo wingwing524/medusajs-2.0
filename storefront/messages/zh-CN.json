@@ -13,7 +13,36 @@
     "easy_returns_title": "7天退货",
     "easy_returns_desc": "轻松退货政策",
     "support_24_7_title": "24/7客户服务",
-    "support_24_7_desc": "专业客户服务团队"
+    "support_24_7_desc": "专业客户服务团队",
+    "shop_by_category": "按类别购买",
+    "explore_collections": "探索我们精心挑选的系列",
+    "category_bags": "手袋",
+    "category_bags_desc": "优质手袋",
+    "category_wallets": "钱包",
+    "category_wallets_desc": "优雅配饰",
+    "category_new_arrivals": "新品上市",
+    "category_new_arrivals_desc": "最新系列",
+    "category_sale": "特价",
+    "category_sale_desc": "低至5折",
+    "featured_collections": "精选系列",
+    "handpicked_products": "为您精心挑选的商品",
+    "limited_time_offer": "限时优惠",
+    "get_discount": "首单享8折",
+    "your_first_order": "首次订单",
+    "newsletter_desc": "订阅我们的电子报，接收独家优惠及新品资讯",
+    "enter_email": "输入您的电子邮件地址",
+    "subscribe": "订阅",
+    "privacy_consent": "订阅即表示您同意我们的隐私政策并同意接收更新资讯",
+    "our_story": "我们的故事",
+    "crafted_with": "精心制作",
+    "passion_quality": "热诚与品质",
+    "story_desc_1": "自创立以来，我们一直致力于打造融合永恒优雅与现代功能的优质配饰。每件作品均经过精心制作，达到最高品质和设计标准。",
+    "story_desc_2": "我们致力于可持续发展和道德生产，确保每件产品不仅外观精美，更能为更美好的未来作出贡献。",
+    "learn_more": "了解更多",
+    "shop_collection": "选购系列",
+    "happy_customers": "满意顾客",
+    "products": "产品",
+    "countries": "国家"
   },
   "common": {
     "home": "首页",
@@ -75,18 +104,22 @@
     "simple_exchanges": "简易换货",
     "simple_exchanges_desc": "尺寸不合适？别担心 - 我们会为你换一个新的商品。",
     "easy_returns": "轻松退货",
-    "easy_returns_desc": "只需退回商品，我们就会退款。无需询问 - 我们会尽力确保你的退货过程顺利无忧。"
+    "easy_returns_desc": "只需退回商品，我们就会退款。无需询问 - 我们会尽力确保你的退货过程顺利无忧。",
+    "free_shipping": "免费配送",
+    "secure_payment": "安全付款",
+    "easy_returns_badge": "轻松退货"
   },
   "chat": {
     "title": "客户支持",
     "online": "在线",
     "typically_replies": "通常即时回复",
-    "placeholder": "输入你的消息...",
-    "welcome": "你好！欢迎来到 Medusa 商店。我能为你提供什么帮助？",
-    "agent_response": "感谢你的消息。客服人员将很快回复。",
+    "placeholder": "输入您的消息...",
+    "welcome": "您好！欢迎来到 Medusa 商店。有什么可以帮到您？",
+    "agent_response": "感谢您的留言。客服人员将尽快回复。",
     "track_order": "追踪订单",
     "shipping_info": "配送信息",
-    "returns": "退货"
+    "returns": "退货",
+    "close": "关闭"
   },
   "footer": {
     "contact_us": "联系我们",
@@ -155,7 +188,20 @@
     "go_to_checkout": "前往结账",
     "already_have_account": "已有账户？",
     "sign_in_better_experience": "登录以享受更好的购物体验。",
-    "sign_in": "登录"
+    "sign_in": "登录",
+    "cart_with_count": "购物车 ({count})",
+    "quantity_label": "数量",
+    "remove": "移除",
+    "subtotal_excl_taxes": "小计（不含税）",
+    "go_to_cart_page": "前往购物车",
+    "go_to_all_products": "前往所有商品页面",
+    "item": "商品",
+    "quantity": "数量",
+    "price": "价格",
+    "subtotal_excl_shipping_taxes": "小计（不含运费和税项）",
+    "discount": "折扣",
+    "taxes": "税项",
+    "gift_card": "礼品卡"
   },
   "checkout": {
     "shipping_address": "配送地址",
@@ -221,6 +267,13 @@
     "date_placed": "下单日期",
     "order_number": "订单编号",
     "total_amount": "总金额",
-    "no_recent_orders": "没有最近的订单"
+    "no_recent_orders": "没有最近的订单",
+    "account_title": "账户",
+    "overview": "概览",
+    "orders": "订单",
+    "logout": "登出",
+    "got_questions": "有问题吗？",
+    "got_questions_description": "你可以在我们的客户服务页面找到常见问题和答案。",
+    "customer_service": "客户服务"
   }
 }

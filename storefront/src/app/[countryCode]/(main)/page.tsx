@@ -6,6 +6,7 @@ import CategoryShowcase from "@modules/home/components/category-showcase"
 import FeaturesSection from "@modules/home/components/features-section"
 import PromoBanner from "@modules/home/components/promo-banner"
 import BrandStory from "@modules/home/components/brand-story"
+import FeaturedCollectionsHeader from "@modules/home/components/featured-collections-header"
 import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
@@ -33,10 +34,7 @@ export default async function Home({
       <FeaturesSection />
       <CategoryShowcase />
       <div className="py-16 bg-gray-50">
-        <div className="content-container mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Collections</h2>
-          <p className="text-gray-600 text-lg">Handpicked products just for you</p>
-        </div>
+        <FeaturedCollectionsHeader />
         <ul className="flex flex-col gap-x-6">
           <FeaturedProducts collections={collections} region={region} />
         </ul>
