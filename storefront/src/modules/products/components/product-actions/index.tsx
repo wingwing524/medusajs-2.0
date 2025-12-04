@@ -8,6 +8,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { useIntersection } from "@lib/hooks/use-in-view"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
+import SizeGuideModal from "../size-guide-modal"
 
 import MobileActions from "./mobile-actions"
 import ProductPrice from "../product-price"
@@ -36,6 +37,7 @@ export default function ProductActions({
 }: ProductActionsProps) {
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
+  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false)
   const countryCode = useParams().countryCode as string
 
   // If there is only 1 variant, preselect the options
@@ -153,6 +155,14 @@ export default function ProductActions({
           </div>
         )}
 
+        {/* Size Guide Button */}
+        <button
+          onClick={() => setIsSizeGuideOpen(true)}
+          className="w-full text-sm text-gray-700 hover:text-gray-900 font-medium underline text-center"
+        >
+          📏 View Size Guide
+        </button>
+
         {/* Add to Cart Button */}
         <Button
           onClick={handleAddToCart}
@@ -189,6 +199,11 @@ export default function ProductActions({
           optionsDisabled={!!disabled || isAdding}
         />
       </div>
+
+      <SizeGuideModal 
+        isOpen={isSizeGuideOpen} 
+        onClose={() => setIsSizeGuideOpen(false)} 
+      />
     </>
   )
 }

@@ -3,6 +3,7 @@ import { Suspense } from "react"
 import { listRegions } from "@lib/data/regions"
 import { getCategoriesList } from "@lib/data/categories"
 import { getCollectionsList } from "@lib/data/collections"
+import { getCustomer } from "@lib/data/customer"
 import { StoreRegion } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import CartButton from "@modules/layout/components/cart-button"
@@ -15,6 +16,7 @@ export default async function Nav() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
   const { product_categories } = await getCategoriesList(0, 6)
   const { collections } = await getCollectionsList(0, 6)
+  const customer = await getCustomer().catch(() => null)
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
@@ -22,7 +24,7 @@ export default async function Nav() {
         <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
           <div className="flex-1 basis-0 h-full flex items-center">
             <div className="h-full">
-              <SideMenu regions={regions} categories={product_categories} collections={collections} />
+              <SideMenu regions={regions} categories={product_categories} collections={collections} customer={customer} />
             </div>
           </div>
 

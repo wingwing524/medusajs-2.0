@@ -22,12 +22,13 @@ type SideMenuProps = {
   regions: HttpTypes.StoreRegion[] | null
   categories?: HttpTypes.StoreProductCategory[] | null
   collections?: HttpTypes.StoreCollection[] | null
+  customer: HttpTypes.StoreCustomer | null
 }
 
-const SideMenu = ({ regions, categories, collections }: SideMenuProps) => {
+const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps) => {
   const toggleState = useToggleState()
   const [selectedLanguage, setSelectedLanguage] = useState(languages[0])
-  const isLoggedIn = false // TODO: Replace with actual authentication check
+  const isLoggedIn = !!customer
 
   return (
     <div className="h-full">
@@ -73,7 +74,7 @@ const SideMenu = ({ regions, categories, collections }: SideMenuProps) => {
                   >
                     <div
                       data-testid="nav-menu-popup"
-                      className="relative h-full w-[85vw] max-w-md bg-white shadow-2xl flex flex-col ml-auto xl:ml-0 z-[100]"
+                      className="relative h-full w-[85vw] max-w-[300px] bg-white shadow-2xl flex flex-col ml-auto xl:ml-0 z-[100]"
                     >
                       {/* Header */}
                       <div className="flex items-center justify-between p-6 border-b border-gray-200">
@@ -184,45 +185,23 @@ const SideMenu = ({ regions, categories, collections }: SideMenuProps) => {
                         <div className="px-6 py-4 border-t border-gray-200">
                           <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Account</h3>
                           {isLoggedIn ? (
-                            <div className="flex flex-col gap-2">
-                              <LocalizedClientLink
-                                href="/account"
-                                onClick={close}
-                                className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                              >
-                                <User size="20" />
-                                <span className="font-medium">My Account</span>
-                              </LocalizedClientLink>
-                              <button
-                                onClick={() => {
-                                  // TODO: Implement logout
-                                  close()
-                                }}
-                                className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left"
-                              >
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                                </svg>
-                                <span className="font-medium">Logout</span>
-                              </button>
-                            </div>
+                            <LocalizedClientLink
+                              href="/account"
+                              onClick={close}
+                              className="flex items-center justify-center gap-3 py-3 px-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+                            >
+                              <User size="20" />
+                              <span>Account</span>
+                            </LocalizedClientLink>
                           ) : (
-                            <div className="flex gap-2">
-                              <LocalizedClientLink
-                                href="/account/login"
-                                onClick={close}
-                                className="flex-1 flex items-center justify-center py-2.5 px-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium text-sm"
-                              >
-                                Login
-                              </LocalizedClientLink>
-                              <LocalizedClientLink
-                                href="/account/register"
-                                onClick={close}
-                                className="flex-1 flex items-center justify-center py-2.5 px-4 bg-gray-100 text-gray-900 rounded-lg hover:bg-gray-200 transition-colors font-medium text-sm"
-                              >
-                                Register
-                              </LocalizedClientLink>
-                            </div>
+                            <LocalizedClientLink
+                              href="/account"
+                              onClick={close}
+                              className="flex items-center justify-center gap-3 py-3 px-4 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+                            >
+                              <User size="20" />
+                              <span>Login / Register</span>
+                            </LocalizedClientLink>
                           )}
                         </div>
                       </div>

@@ -54,8 +54,8 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
       </div>
 
       {/* Main Product Section */}
-      <div className="content-container py-8 lg:py-12" data-testid="product-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+      <div className="content-container py-6 lg:py-8" data-testid="product-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
           {/* Left Side: Image Gallery */}
           <div>
             <ImageGallery images={product?.images || []} />
@@ -63,7 +63,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
           {/* Right Side: Product Info & Actions */}
           <div className="lg:sticky lg:top-4 lg:self-start">
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               <ProductInfo product={product} />
               <ProductOnboardingCta />
               <Suspense
