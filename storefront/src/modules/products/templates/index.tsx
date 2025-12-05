@@ -5,9 +5,7 @@ import React, { Suspense } from "react"
 import ImageGallery from "@modules/products/components/image-gallery"
 import ProductActions from "@modules/products/components/product-actions"
 import ProductTabs from "@modules/products/components/product-tabs"
-import RelatedProducts from "@modules/products/components/related-products"
 import ProductInfo from "@modules/products/templates/product-info"
-import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import { notFound } from "next/navigation"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import { HttpTypes } from "@medusajs/types"
@@ -112,15 +110,6 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Related Products */}
-      <div className="bg-gray-50 py-16">
-        <div className="content-container" data-testid="related-products-container">
-          <Suspense fallback={<SkeletonRelatedProducts />}>
-            <RelatedProducts product={product} countryCode={countryCode} />
-          </Suspense>
         </div>
       </div>
     </>

@@ -1,7 +1,10 @@
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { Suspense } from "react"
 
 import ProductTemplate from "@modules/products/templates"
+import RelatedProducts from "@modules/products/components/related-products/async-wrapper"
+import SkeletonRelatedProducts from "@modules/skeletons/templates/skeleton-related-products"
 import { getRegion, listRegions } from "@lib/data/regions"
 import { getProductByHandle, getProductsList } from "@lib/data/products"
 
@@ -80,10 +83,21 @@ export default async function ProductPage({ params }: Props) {
   }
 
   return (
-    <ProductTemplate
-      product={pricedProduct}
-      region={region}
-      countryCode={params.countryCode}
-    />
+    <>
+      <ProductTemplate
+        product={pricedProduct}
+        region={region}
+        countryCode={params.countryCode}
+      />
+      
+      {/* Related Products - Server Component */}
+      <div className="bg-gray-50 py-16">
+        <div className="content-container" data-testid="related-products-container">
+          <Suspense fallback={<SkeletonRelatedProducts />}>
+            <RelatedProducts product={pricedProduct} countryCode={params.countryCode} />
+          </Suspense>
+        </div>
+      </div>
+    </>
   )
 }
