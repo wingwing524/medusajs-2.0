@@ -20,6 +20,8 @@ export default async function RelatedProductsWrapper({
   product,
   countryCode,
 }: RelatedProductsWrapperProps) {
+  console.log('[RelatedProducts] Component called with product:', product.handle, 'countryCode:', countryCode)
+  
   try {
     const region = await getRegion(countryCode)
 
