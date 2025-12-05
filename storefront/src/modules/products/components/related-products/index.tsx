@@ -15,7 +15,7 @@ export default function RelatedProducts({
 }: RelatedProductsProps) {
   const t = useTranslations('product')
 
-  if (!products.length) {
+  if (!products || !products.length) {
     return null
   }
   

@@ -46,10 +46,10 @@ export default async function RelatedProductsWrapper({
     queryParams,
     countryCode,
   }).then(({ response }) => {
-    return response.products.filter(
+    return response.products?.filter(
       (responseProduct) => responseProduct.id !== product.id
-    )
+    ) || []
   })
 
-  return <RelatedProducts products={products} region={region} />
+  return <RelatedProducts products={products || []} region={region} />
 }
