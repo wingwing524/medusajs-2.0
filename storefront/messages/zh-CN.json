@@ -152,22 +152,26 @@
     "all_rights_reserved": "版权所有"
   },
   "size_guide": {
-    "title": "尺码指南",
+    "title": "尺寸指南",
     "how_to_measure": "如何测量",
     "chest": "胸围",
     "chest_description": "在胸部最丰满处环绕测量，保持卷尺水平。",
+    "chest_instruction": "在胸部最丰满处环绕测量，保持卷尺水平。",
     "waist": "腰围",
     "waist_description": "在自然腰线处环绕测量，保持卷尺舒适宽松。",
+    "waist_instruction": "在自然腰线处环绕测量，保持卷尺舒适宽松。",
     "hips": "臀围",
     "hips_description": "在臀部最丰满处环绕测量，大约在腰部下方8英寸。",
+    "hips_instruction": "在臀部最丰满处环绕测量，大约在腰部下方8英寸。",
     "length": "长度",
     "length_description": "从肩部最高点测量到所需长度。",
-    "size_chart": "尺码表（英寸）",
-    "size": "尺码",
+    "length_instruction": "从肩部最高点测量到所需长度。",
+    "size_chart": "尺寸表（英寸）",
+    "size": "尺寸",
     "fit_recommendations": "合身建议",
-    "fit_tip_1": "如果你介于两个尺码之间，我们建议选择较大的尺码以获得更舒适的合身感。",
+    "fit_tip_1": "如果您介于两个尺寸之间，我们建议选择较大的尺寸以获得更舒适的合身感。",
     "fit_tip_2": "我们的服装设计为常规合身。查看产品详情以了解特定合身说明。",
-    "fit_tip_3": "还不确定？联系我们的客户服务团队以获得个性化尺码建议。"
+    "fit_tip_3": "还不确定？联系我们的客户服务团队以获得个性化尺寸建议。"
   },
   "trust_badges": {
     "free_shipping": "免费送货",
