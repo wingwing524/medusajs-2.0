@@ -11,7 +11,7 @@ import { getCollectionsWithProducts } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
 export const metadata: Metadata = {
-  title: "Premium Bags & Accessories | Your Shop Name",
+  title: "Premium Bags & Accessories |V'lora",
   description:
     "Discover our curated collection of premium bags, wallets, and accessories. Quality craftsmanship meets timeless design.",
 }
