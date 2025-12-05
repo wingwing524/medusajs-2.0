@@ -1,64 +1,23 @@
 "use client"
 
 import Product from "../product-preview"
-import { getRegion } from "@lib/data/regions"
-import { getProductsList } from "@lib/data/products"
 import { HttpTypes } from "@medusajs/types"
 import { useTranslations } from "../../../../i18n/client"
 
 type RelatedProductsProps = {
-  product: HttpTypes.StoreProduct
-  countryCode: string
+  products: HttpTypes.StoreProduct[]
+  region: HttpTypes.StoreRegion
 }
 
-type StoreProductParamsWithTags = HttpTypes.StoreProductParams & {
-  tags?: string[]
-}
-
-type StoreProductWithTags = HttpTypes.StoreProduct & {
-  tags?: { value: string }[]
-}
-
-export default async function RelatedProducts({
-  product,
-  countryCode,
+export default function RelatedProducts({
+  products,
+  region,
 }: RelatedProductsProps) {
-  const region = await getRegion(countryCode)
-
-  if (!region) {
-  const queryParams: StoreProductParamsWithTags = {}
-  }
-
-  // edit this function to define your related products logic
-  const queryParams: StoreProductParamsWithTags = {}
-  if (region?.id) {
-    queryParams.region_id = region.id
-  }
-  if (product.collection_id) {
-    queryParams.collection_id = [product.collection_id]
-  }
-  const productWithTags = product as StoreProductWithTags
-  if (productWithTags.tags) {
-    queryParams.tags = productWithTags.tags
-      .map((t) => t.value)
-      .filter(Boolean) as string[]
-  }
-  queryParams.is_giftcard = false
-
-  const products = await getProductsList({
-    queryParams,
-    countryCode,
-  }).then(({ response }) => {
-    return response.products.filter(
-      (responseProduct) => responseProduct.id !== product.id
-    )
-  })
+  const t = useTranslations('product')
 
   if (!products.length) {
     return null
   }
-
-  const t = useTranslations('product')
   
   return (
     <div className="product-page-constraint">
@@ -74,7 +33,7 @@ export default async function RelatedProducts({
       <ul className="grid grid-cols-2 small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8">
         {products.map((product) => (
           <li key={product.id}>
-            {region && <Product region={region} product={product} />}
+            <Product region={region} product={product} />
           </li>
         ))}
       </ul>
