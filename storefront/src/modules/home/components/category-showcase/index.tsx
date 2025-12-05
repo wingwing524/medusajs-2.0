@@ -33,14 +33,14 @@ export default function CategoryShowcase() {
     },
   ]
   return (
-    <section className="py-16 bg-white">
+    <section className="py-8 sm:py-12 lg:py-16 bg-white">
       <div className="content-container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('shop_by_category')}</h2>
-          <p className="text-gray-600 text-lg">{t('explore_collections')}</p>
+        <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2 sm:mb-3 lg:mb-4">{t('shop_by_category')}</h2>
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg">{t('explore_collections')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
           {categories.map((category) => (
             <LocalizedClientLink
               key={category.titleKey}
@@ -56,13 +56,13 @@ export default function CategoryShowcase() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               </div>
               
-              <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl font-bold mb-1">{t(category.titleKey)}</h3>
-                <p className="text-gray-200 text-sm">{t(category.descriptionKey)}</p>
+              <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-6 text-white">
+                <h3 className="text-base sm:text-lg lg:text-2xl font-bold mb-0.5 sm:mb-1">{t(category.titleKey)}</h3>
+                <p className="text-gray-200 text-[10px] sm:text-xs lg:text-sm">{t(category.descriptionKey)}</p>
               </div>
 
-              <div className="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                <svg className="w-5 h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="absolute top-2 right-2 sm:top-3 sm:right-3 lg:top-4 lg:right-4 w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <svg className="w-4 h-4 sm:w-4.5 sm:h-4.5 lg:w-5 lg:h-5 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>

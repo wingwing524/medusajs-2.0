@@ -16,7 +16,7 @@ export default function Footer({ categories }: FooterProps) {
     <footer className="border-t border-ui-border-base w-full bg-gray-50">
       <div className="content-container flex flex-col w-full">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 py-8 sm:py-12 md:py-16">
           {/* Column 1: Business Information */}
           <div className="flex flex-col gap-6">
             {/* Contact Us */}
@@ -61,9 +61,9 @@ export default function Footer({ categories }: FooterProps) {
           {/* Column 2: Products */}
           <div>
             <h3 className="font-semibold text-base mb-4">{t('products')}</h3>
-            <ul className="flex flex-col gap-3 text-sm text-gray-600">
+            <ul className="flex flex-col gap-1 text-sm text-gray-600">
               <li>
-                <LocalizedClientLink href="/store" className="hover:text-gray-900 transition-colors">
+                <LocalizedClientLink href="/store" className="hover:text-gray-900 transition-colors inline-block min-h-[44px] flex items-center">
                   {t('all_products')}
                 </LocalizedClientLink>
               </li>
@@ -76,7 +76,7 @@ export default function Footer({ categories }: FooterProps) {
                     <li key={category.id}>
                       <LocalizedClientLink 
                         href={`/categories/${category.handle}`} 
-                        className="hover:text-gray-900 transition-colors"
+                        className="hover:text-gray-900 transition-colors inline-block min-h-[44px] flex items-center"
                       >
                         {category.name}
                       </LocalizedClientLink>

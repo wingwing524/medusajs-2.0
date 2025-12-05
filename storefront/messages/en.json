@@ -42,7 +42,15 @@
     "shop_collection": "Shop Collection",
     "happy_customers": "Happy Customers",
     "products": "Products",
-    "countries": "Countries"
+    "countries": "Countries",
+    "new_arrivals_hero": "New Arrivals",
+    "fresh_styles": "Fresh Styles",
+    "new_arrivals_desc": "Discover the latest trends and must-have items for this season",
+    "shop_new": "Shop New",
+    "exclusive_collection": "Exclusive Collection",
+    "limited_edition": "Limited Edition",
+    "exclusive_desc": "Premium quality products crafted with attention to detail",
+    "explore": "Explore"
   },
   "common": {
     "home": "Home",
@@ -74,6 +82,7 @@
     "my_account": "My Account"
   },
   "product": {
+    "sort_and_filter": "Sort & Filter",
     "add_to_cart": "Add to Bag",
     "add_to_wishlist": "Add to Wishlist",
     "out_of_stock": "Out of Stock",

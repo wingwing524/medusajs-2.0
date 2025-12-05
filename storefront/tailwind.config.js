@@ -47,6 +47,13 @@ module.exports = {
         "8xl": "100rem",
       },
       screens: {
+        xs: "350px",      // Small phones
+        sm: "430px",      // Standard phones
+        md: "768px",      // Tablets
+        lg: "1024px",     // Desktop
+        xl: "1280px",     // Large desktop
+        "2xl": "1536px",  // Extra large
+        // Legacy breakpoints for backward compatibility
         "2xsmall": "320px",
         xsmall: "512px",
         small: "1024px",
@@ -54,7 +61,6 @@ module.exports = {
         large: "1440px",
         xlarge: "1680px",
         "2xlarge": "1920px",
-        xl: "1280px", // Mobile breakpoint
       },
       fontSize: {
         "3xl": "2rem",

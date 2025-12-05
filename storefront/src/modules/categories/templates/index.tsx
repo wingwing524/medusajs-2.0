@@ -3,6 +3,7 @@ import { Suspense } from "react"
 
 import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
 import RefinementList from "@modules/store/components/refinement-list"
+import MobileRefinementList from "@modules/store/components/refinement-list/mobile"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
 import PaginatedProducts from "@modules/store/templates/paginated-products"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -30,7 +31,7 @@ export default function CategoryTemplate({
   return (
     <div data-testid="category-container">
       {/* Hero Banner */}
-      <div className="relative h-[280px] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
+      <div className="relative h-[140px] sm:h-[180px] md:h-[220px] bg-gradient-to-r from-gray-900 to-gray-800 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYgMi42ODYgNiA2cy0yLjY4NiA2LTYgNi02LTIuNjg2LTYtNiAyLjY4Ni02IDYtNnptMCAyYy0yLjIxIDAtNCAx Ljc5LTQgNHMxLjc5IDQgNCA0IDQtMS43OSA0LTQtMS43OS00LTQtNHoiIGZpbGw9IiNmZmYiLz48L2c+PC9zdmc+')] bg-repeat" />
         </div>
@@ -67,14 +68,14 @@ export default function CategoryTemplate({
 
           {/* Category Title */}
           <h1 
-            className="text-4xl md:text-5xl font-bold text-white mb-3"
+            className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 sm:mb-3"
             data-testid="category-page-title"
           >
             {category.name}
           </h1>
           
           {category.description && (
-            <p className="text-gray-300 text-lg max-w-2xl">
+            <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl">
               {category.description}
             </p>
           )}
@@ -91,7 +92,7 @@ export default function CategoryTemplate({
                 <LocalizedClientLink
                   key={c.id}
                   href={`/categories/${c.handle}`}
-                  className="px-5 py-2 bg-white border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all whitespace-nowrap"
+                  className="px-4 py-2 sm:px-5 min-h-[44px] flex items-center bg-white border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all whitespace-nowrap"
                 >
                   {c.name}
                 </LocalizedClientLink>
@@ -102,10 +103,15 @@ export default function CategoryTemplate({
       )}
 
       {/* Main Content */}
-      <div className="content-container py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          {/* Sidebar Filters */}
-          <aside className="lg:w-64 flex-shrink-0">
+      <div className="content-container py-6 sm:py-8">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+          {/* Mobile Filters Dropdown - Show on mobile/tablet */}
+          <div className="lg:hidden">
+            <MobileRefinementList sortBy={sort} data-testid="mobile-sort-by-container" />
+          </div>
+
+          {/* Sidebar Filters - Desktop only */}
+          <aside className="hidden lg:block lg:w-64 flex-shrink-0">
             <div className="sticky top-4">
               <RefinementList sortBy={sort} data-testid="sort-by-container" />
             </div>

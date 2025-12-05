@@ -26,7 +26,7 @@ export default function ProductPreview({
     >
       <div 
         data-testid="product-wrapper"
-        className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+        className="bg-white overflow-hidden transition-all duration-300 hover:bg-gray-50"
       >
         <div className="relative overflow-hidden aspect-[3/4] bg-gray-100">
           <Thumbnail
@@ -48,14 +48,14 @@ export default function ProductPreview({
           </div>
         </div>
         
-        <div className="p-4">
+        <div className="p-3 sm:p-4 text-center">
           <Text 
-            className="text-gray-900 font-medium mb-2 line-clamp-2 group-hover:text-gray-600 transition-colors" 
+            className="text-sm sm:text-base text-gray-900 font-medium mb-2 line-clamp-2 group-hover:text-gray-600 transition-colors" 
             data-testid="product-title"
           >
             {product.title}
           </Text>
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-center">
             {cheapestPrice && (
               <PreviewPrice price={cheapestPrice} />
             )}

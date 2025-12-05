@@ -42,7 +42,15 @@
     "shop_collection": "選購系列",
     "happy_customers": "滿意顧客",
     "products": "產品",
-    "countries": "國家"
+    "countries": "國家",
+    "new_arrivals_hero": "新品上市",
+    "fresh_styles": "時尚新款",
+    "new_arrivals_desc": "探索本季最新潮流和必備單品",
+    "shop_new": "選購新品",
+    "exclusive_collection": "獨家系列",
+    "limited_edition": "限量版",
+    "exclusive_desc": "精心製作的優質產品，注重每一個細節",
+    "explore": "探索"
   },
   "common": {
     "home": "首頁",
@@ -74,6 +82,7 @@
     "my_account": "我的帳戶"
   },
   "product": {
+    "sort_and_filter": "排序與篩選",
     "add_to_cart": "加入購物袋",
     "add_to_wishlist": "加入願望清單",
     "out_of_stock": "缺貨",

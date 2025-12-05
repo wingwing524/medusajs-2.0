@@ -44,7 +44,7 @@ const LiveChat = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 z-50 bg-gray-900 text-white rounded-full p-4 shadow-2xl hover:bg-gray-800 transition-all hover:scale-110"
+          className="fixed bottom-4 right-4 z-40 bg-gray-900 text-white rounded-full p-3 shadow-2xl hover:bg-gray-800 transition-all hover:scale-110 min-w-[48px] min-h-[48px] flex items-center justify-center sm:bottom-6 sm:right-6 sm:p-4"
           aria-label="Open chat"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ const LiveChat = () => {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 w-[380px] h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200">
+        <div className="fixed bottom-4 right-4 z-40 w-[calc(100vw-32px)] max-w-[380px] h-[calc(100vh-100px)] max-h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-200 sm:bottom-6 sm:right-6 md:w-[380px] md:h-[600px]">
           {/* Header */}
           <div className="bg-gray-900 text-white p-4 flex items-center justify-between">
             <div className="flex items-center gap-3">

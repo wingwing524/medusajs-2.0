@@ -41,9 +41,20 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
               <div className="relative flex h-full">
                 <Popover.Button
                   data-testid="nav-menu-button"
-                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base uppercase tracking-wide text-sm font-medium"
+                  className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base min-w-[44px] min-h-[44px] justify-center"
                 >
-                  Menu
+                  {/* Hamburger Icon - Show on mobile/tablet */}
+                  <svg 
+                    className="w-6 h-6 lg:hidden" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  {/* Text - Show on desktop */}
+                  <span className="hidden lg:inline uppercase tracking-wide text-sm font-medium">Menu</span>
                 </Popover.Button>
               </div>
 
@@ -68,15 +79,15 @@ const SideMenu = ({ regions, categories, collections, customer }: SideMenuProps)
                   <Transition.Child
                     as={Fragment}
                     enter="transition ease-out duration-300"
-                    enterFrom="translate-x-full xl:-translate-x-full"
+                    enterFrom="translate-x-full lg:-translate-x-full"
                     enterTo="translate-x-0"
                     leave="transition ease-in duration-200"
                     leaveFrom="translate-x-0"
-                    leaveTo="translate-x-full xl:-translate-x-full"
+                    leaveTo="translate-x-full lg:-translate-x-full"
                   >
                     <div
                       data-testid="nav-menu-popup"
-                      className="relative h-full w-[85vw] max-w-[300px] bg-white shadow-2xl flex flex-col ml-auto xl:ml-0 z-[100]"
+                      className="relative h-full w-[85vw] max-w-[300px] bg-white shadow-2xl flex flex-col ml-auto lg:ml-0 z-[100]"
                     >
                       {/* Header */}
                       <div className="flex items-center justify-between p-6 border-b border-gray-200">
