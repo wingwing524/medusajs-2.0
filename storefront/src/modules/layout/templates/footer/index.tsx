@@ -92,6 +92,16 @@ export default function Footer({ categories }: FooterProps) {
             <h3 className="font-semibold text-base mb-4">{t('need_help')}</h3>
             <ul className="flex flex-col gap-3 text-sm text-gray-600">
               <li>
+                <LocalizedClientLink href="/contact" className="hover:text-gray-900 transition-colors">
+                  {t('contact_us')}
+                </LocalizedClientLink>
+              </li>
+              <li>
+                <LocalizedClientLink href="/faq" className="hover:text-gray-900 transition-colors">
+                  {t('faq')}
+                </LocalizedClientLink>
+              </li>
+              <li>
                 <LocalizedClientLink href="/about" className="hover:text-gray-900 transition-colors">
                   {t('about_us')}
                 </LocalizedClientLink>
